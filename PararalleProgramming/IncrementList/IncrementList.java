@@ -16,8 +16,9 @@ class IncrementTask extends RecursiveAction {
 
     @Override
     protected void compute() {
+      System.out.println("Compute");
       if (hi - lo < THRESHOLD) {
-        for (int i = lo; i < hi; ++i)
+        for (int i = lo; i <= hi; ++i)
           array[i]++;
       }
       else {
@@ -30,17 +31,19 @@ class IncrementTask extends RecursiveAction {
     public long[] getArr(){
       return this.array;
     }
+    
   }
  
 
-public class Increment {
+public class IncrementList {
 
     public static void main(String[] args) {
-        long [] arr = new long[]{1,2,3,4,5};
+        long [] arr = new long[]{1,2,3,4};
         int low = 0;
         int high = arr.length -1;
         System.out.printf("Before Increment : %s \n" , Arrays.toString(arr));
         IncrementTask i = new IncrementTask(arr, low, high);
+        i.compute();
         System.out.printf("After Increment : %s \n" , Arrays.toString(arr));
         
 
